@@ -1,0 +1,16 @@
+@media (max-width: 1000px) {
+    .line2 {
+        background-color: #A71F37;
+        width: 1px;
+        height: 200px;
+        margin-top: 10px;
+        position: static;
+        float: left;
+    }
+}
+.new {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    z-index: 300;
+}
