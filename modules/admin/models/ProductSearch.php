@@ -12,6 +12,9 @@ use app\modules\admin\models\Product;
  */
 class ProductSearch extends Product
 {
+
+    public $sort;
+
     /**
      * @inheritdoc
      */
@@ -19,8 +22,10 @@ class ProductSearch extends Product
     {
         return [
             [['id', 'category_id'], 'integer'],
-            [['name', 'content', 'keywords', 'description', 'img', 'hit', 'new', 'sale'], 'safe'],
+            [[ 'hit', 'new', 'sale'], 'safe'],
             [['price'], 'number'],
+
+
         ];
     }
 
@@ -48,6 +53,19 @@ class ProductSearch extends Product
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
+            'sort' => [
+//
+                'attributes' => [
+//                    'price' => [
+//                        'asc' => ['price' => SORT_ASC],
+//                        'desc' => ['price' => SORT_DESC],
+//                    ],
+//                    'price' => [
+//                        'asc' => ['price' => SORT_ASC],
+//                        'desc' => ['price' => SORT_DESC],
+//                    ],
+            ]
+                ]
         ]);
 
         $this->load($params);
@@ -65,6 +83,16 @@ class ProductSearch extends Product
             'price' => $this->price,
         ]);
 
+        $dataProvider->sort->attributes['sort'] = [
+            'asc' => ['product.price' => SORT_ASC],
+            'desc' => ['product.price' => SORT_DESC],
+        ];
+
+
+
+//        $query->andFilterWhere(['like', 'price', $this->price]);
+
+
         $query->andFilterWhere(['like', 'name', $this->name])
             ->andFilterWhere(['like', 'content', $this->content])
             ->andFilterWhere(['like', 'keywords', $this->keywords])
@@ -73,6 +101,7 @@ class ProductSearch extends Product
             ->andFilterWhere(['like', 'hit', $this->hit])
             ->andFilterWhere(['like', 'new', $this->new])
             ->andFilterWhere(['like', 'sale', $this->sale]);
+
 
         return $dataProvider;
     }

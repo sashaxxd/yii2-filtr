@@ -9,10 +9,12 @@
 namespace app\controllers;
 
 
-use app\models\Products;
+
+
 use yii\web\Controller;
 use app\modules\admin\models\ProductSearch;
 use Yii;
+
 
 class ProductsController extends Controller
 {
@@ -26,18 +28,44 @@ class ProductsController extends Controller
 
     public  function actionIndex()
     {
-        //$this->layout = false;
-        if(Yii::$app->request->isAjax){
-            $this->layout = false;
+
+//        Debug(Yii::$app->request->get());
+        if(Yii::$app->request->isAjax) {
+
+            if (Yii::$app->request->get('ProductSearch')['sort'] == '-price') {
+
+
+           
         }
+            $this->layout = false;
+            $searchModel = new ProductSearch();
+
+            $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+
+            $model = $dataProvider->sort->attributes;
+            return $this->render('ajax',
+                [
+                    'model' => $model,
+
+                    'searchModel' => $searchModel,
+                    'dataProvider' => $dataProvider,
+
+                ]);
+        }
+
+
         $searchModel = new ProductSearch();
-//         Debug($searchModel->search(Yii::$app->request->queryParams));
+
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+       
+        $model = $dataProvider->sort->attributes;
         return $this->render('index',
             [
-//                'model' => $model,
+               'model' => $model,
                 'searchModel' => $searchModel,
                 'dataProvider' => $dataProvider,
+        
+                
             ]);
     }
 }

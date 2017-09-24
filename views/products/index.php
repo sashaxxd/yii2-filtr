@@ -7,10 +7,10 @@ use yii\widgets\ActiveForm;
 <div class="product-index">
 
 
-    <?php $form = ActiveForm::begin([
-        'action' => ['index'],
-        'method' => 'get',
-    ]); ?>
+<!--    --><?php //$form = ActiveForm::begin([
+//        'action' => ['index'],
+//        'method' => 'get',
+//    ]); ?>
 
     <!--    --><?//= $form->field($model, 'id') ?>
     <!---->
@@ -84,10 +84,8 @@ use yii\widgets\ActiveForm;
                     </div>
                 </div>
 
-                <?php $form = ActiveForm::begin([
-//                    'action' => ['index'],
-//                    'method' => 'get',
-                ]); ?>
+                <?php $form = ActiveForm::begin(['options' => ['data-pjax' => true]]); ?>
+                <div id="chttt">
                 <div id="wb_LayoutGrid1">
                     <div id="LayoutGrid1">
                         <div class="row">
@@ -120,6 +118,7 @@ use yii\widgets\ActiveForm;
                             <div class="col-1">
 <!--                                <input type="checkbox" id="Checkbox3" name="" value="on">-->
                                     <?php  echo $form->field($searchModel, 'sale')->checkbox([ '0', '1', 'class' => 'checkbox']) ?>
+
                             </div>
                             <div class="col-2">
                                 <label for="productsearch-sale" id="Label3">АКЦИЯ</label>
@@ -127,29 +126,8 @@ use yii\widgets\ActiveForm;
                         </div>
                     </div>
                 </div>
-<!--                <div id="wb_LayoutGrid4">-->
-<!--                    <div id="LayoutGrid4">-->
-<!--                        <div class="row">-->
-<!--                            <div class="col-1">-->
-<!--                                <input type="checkbox" id="Checkbox4" name="" value="on">-->
-<!--                            </div>-->
-<!--                            <div class="col-2">-->
-<!--                                <label for="Checkbox4" id="Label4">НИШТЯКОВЫЕ</label>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--                <div id="wb_LayoutGrid9">-->
-<!--                    <div id="LayoutGrid9">-->
-<!--                        <div class="row">-->
-<!--                            <div class="col-1">-->
-<!--                                <input type="submit" id="Button_search2" name="" value="Найти">-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!---->
-<!--                </div>-->
-                <?php ActiveForm::end(); ?>
+                    </div>
+
 
             </div>
             <div class="col-2">
@@ -160,12 +138,43 @@ use yii\widgets\ActiveForm;
                             </div>
                             <div class="col-2">
                                 <div id="wb_Text1">
-                                    <span id="wb_uid1">Сортировать по:</span>
+                                    <span id="wb_uid1">Сортировать по:
+
+                                    </span>
+
                                 </div>
-                                <select name="Combobox1" size="1" id="Combobox1">
-                                    <option>Цене (сначала дешевые)</option>
-                                    <option>Цене (сначала дорогие)</option>
+
+
+<!--                                --><?//= $form->field($searchModel, 'sort')
+//                                    ->dropDownList([
+//                                        '-price' => 'Цена по возрастанию',
+//                                        'price' => 'Цена по убыванию',
+//                                    ],['id' =>'find-price'])
+//                                    ->label(false)
+//                                    ->error(false);
+//                                ?>
+
+                                <select id="find-price" class="form-control" name="sort">
+                                    <option value="-price">Цена по убыванию</option>
+                                    <option value="price">Цена по возрастанию</option>
                                 </select>
+
+
+                                <?php ActiveForm::end(); ?>
+
+
+                                <?php
+                                $findUrl = \yii\helpers\Url::current([], true);
+                                $pos = strpos($findUrl, '&rating');
+                                if($pos){
+                                    $findUrl = substr($findUrl, 0 , $pos);
+                                }
+                                $app_js = <<<JS
+
+JS;
+                                $this->registerJs($app_js);
+                                ?>
+
                             </div>
                         </div>
                     </div>
@@ -182,6 +191,7 @@ use yii\widgets\ActiveForm;
                         </div>
                     </div>
                 </div>
+
                 <div id="wb_LayoutGrid11">
                     <div id="LayoutGrid11">
                         <div class="row">
@@ -246,6 +256,7 @@ use yii\widgets\ActiveForm;
 
                     </div>
                 </div>
+
             </div>
         </div>
     </div>
