@@ -32,13 +32,13 @@ class ProductsController extends Controller
         Debug(Yii::$app->request->get());
         if(Yii::$app->request->isAjax) {
 
-            if (Yii::$app->request->get('ProductSearch')['sort'] == '-price') {
+            Debug(Yii::$app->request->get('ProductSearch')['price2']);
 
 
-           
-        }
             $this->layout = false;
             $searchModel = new ProductSearch();
+
+            $searchModel->price2 = Yii::$app->request->get('ProductSearch')['price2'];
 
             $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 

@@ -14,7 +14,7 @@ class ProductSearch extends Product
 {
 
     public $sort;
-
+    public $price2;
     /**
      * @inheritdoc
      */
@@ -49,21 +49,14 @@ class ProductSearch extends Product
     {
         $query = Product::find();
 
-        // add conditions that should always apply here
+
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
             'sort' => [
-//
+
                 'attributes' => [
-//                    'price' => [
-//                        'asc' => ['price' => SORT_ASC],
-//                        'desc' => ['price' => SORT_DESC],
-//                    ],
-//                    'price' => [
-//                        'asc' => ['price' => SORT_ASC],
-//                        'desc' => ['price' => SORT_DESC],
-//                    ],
+
             ]
                 ]
         ]);
@@ -80,20 +73,14 @@ class ProductSearch extends Product
         $query->andFilterWhere([
             'id' => $this->id,
             'category_id' => $this->category_id,
-            'price' => $this->price,
+//            'price' => $this->price,
         ]);
 
-        $dataProvider->sort->attributes['sort'] = [
-            'asc' => ['product.price' => SORT_ASC],
-            'desc' => ['product.price' => SORT_DESC],
-        ];
 
-
-
-//        $query->andFilterWhere(['like', 'price', $this->price]);
 
 
         $query->andFilterWhere(['like', 'name', $this->name])
+            ->andFilterWhere(['between', 'price', $this->price, $this->price2])
             ->andFilterWhere(['like', 'content', $this->content])
             ->andFilterWhere(['like', 'keywords', $this->keywords])
             ->andFilterWhere(['like', 'description', $this->description])

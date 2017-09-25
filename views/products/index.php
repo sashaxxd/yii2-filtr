@@ -130,6 +130,8 @@ use yii\widgets\ActiveForm;
                                 <label for='price'>
                                     От:
                                     <input type="text" name="price" id="price" maxlength="10">
+                                    <?php  echo $form->field($searchModel, 'price')->textInput() ?>
+                                    <?php  echo $form->field($searchModel, 'price2')->textInput() ?>
                                 </label>
                                 <label for='price2'>
                                     До:
