@@ -125,17 +125,17 @@ use yii\widgets\ActiveForm;
                             </div>
                         </div>
                         <div id='options'>
-                            <h3>Цена:</h3>
+                            Цена:
 
                                 <label for='price'>
                                     От:
-                                    <input type="text" name="price" id="price" maxlength="10">
-                                    <?php  echo $form->field($searchModel, 'price')->textInput() ?>
-                                    <?php  echo $form->field($searchModel, 'price2')->textInput() ?>
+<!--                                    <input type="text" name="ProductSearch[price]" id="price" maxlength="10">-->
+                                    <?php  echo $form->field($searchModel, 'price')->textInput(['id' => 'price'])->label(false) ?>
+
                                 </label>
                                 <label for='price2'>
                                     До:
-                                    <input type="text" name="price2" id="price2" maxlength="10">
+                                    <?php  echo $form->field($searchModel, 'price2')->textInput(['id' => 'price2'])->label(false) ?>
                                 </label>
 
                         </div>

@@ -29,10 +29,10 @@ class ProductsController extends Controller
     public  function actionIndex()
     {
 
-        Debug(Yii::$app->request->get());
+//        Debug(Yii::$app->request->get());
         if(Yii::$app->request->isAjax) {
 
-            Debug(Yii::$app->request->get('ProductSearch')['price2']);
+//            Debug(Yii::$app->request->get('ProductSearch')['price2']);
 
 
             $this->layout = false;

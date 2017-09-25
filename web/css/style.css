@@ -16,17 +16,17 @@
 }
 
 
-#amount {
-     border: 0;
-     color: #E80B44;
-     font-weight: bold;
-     font-size: 15px;
- }
+/*#amount {*/
+     /*border: 0;*/
+     /*color: #E80B44;*/
+     /*font-weight: bold;*/
+     /*font-size: 15px;*/
+ /*}*/
 
-#slider-range{
-    font-size: 20px;
-    margin-top: 20px;
-}
+/*#slider-range{*/
+    /*font-size: 20px;*/
+    /*margin-top: 20px;*/
+/*}*/
 
 #price,#price2 {
     border:1px solid #074776;
@@ -35,9 +35,9 @@
     font-size: 15px;
 }
 #options {
-    width:300px;
-    padding:10px;
-    border:1px solid #074776;
+
+
+    border:0px solid #074776;
     font-size: 15px;
 }
 #slider_price {
