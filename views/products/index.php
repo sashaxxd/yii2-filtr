@@ -124,8 +124,24 @@ use yii\widgets\ActiveForm;
                                 <label for="productsearch-sale" id="Label3">АКЦИЯ</label>
                             </div>
                         </div>
+                        <div id='options'>
+                            <h3>Цена:</h3>
+
+                                <label for='price'>
+                                    От:
+                                    <input type="text" name="price" id="price" maxlength="10">
+                                </label>
+                                <label for='price2'>
+                                    До:
+                                    <input type="text" name="price2" id="price2" maxlength="10">
+                                </label>
+
+                        </div>
+                        <div id="slider_price" ></div>
                     </div>
+
                 </div>
+
                     </div>
 
 
@@ -184,7 +200,9 @@ JS;
                         <div class="row">
                             <div class="col-1">
                                 <div id="wb_Text16">
-                                    <span id="wb_uid2"><strong>ПОПУЛЯРНЫЕ ТОВАРЫ</strong></span>
+                                    <span id="wb_uid2"><strong>ПОПУЛЯРНЫЕ ТОВАРЫ
+
+                                        </strong></span>
                                 </div>
                                 <hr id="Line10">
                             </div>

@@ -14,3 +14,33 @@
     right: 0px;
     z-index: 300;
 }
+
+
+#amount {
+     border: 0;
+     color: #E80B44;
+     font-weight: bold;
+     font-size: 15px;
+ }
+
+#slider-range{
+    font-size: 20px;
+    margin-top: 20px;
+}
+
+#price,#price2 {
+    border:1px solid #074776;
+    padding:5px;
+    width:80px;
+    font-size: 15px;
+}
+#options {
+    width:300px;
+    padding:10px;
+    border:1px solid #074776;
+    font-size: 15px;
+}
+#slider_price {
+    margin-top:10px;
+    font-size: 20px;
+}

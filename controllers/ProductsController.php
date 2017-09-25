@@ -29,7 +29,7 @@ class ProductsController extends Controller
     public  function actionIndex()
     {
 
-//        Debug(Yii::$app->request->get());
+        Debug(Yii::$app->request->get());
         if(Yii::$app->request->isAjax) {
 
             if (Yii::$app->request->get('ProductSearch')['sort'] == '-price') {
